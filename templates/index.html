@@ -1,0 +1,89 @@
+{% include "head.html" %}
+<body ng-controller="MainController">
+{% include "nav.html" %}
+<!-- Login Modal -->
+    <div class="modal fade" id="loginModal" role="dialog">
+      <div class="modal-dialog" >
+        <div class="modal-content">
+          <div class="modal-body">
+          <h5 class="lead text-center text-muted">Login</h5>
+
+            <form class="form-horizontal" ng-submit="loginForm()">
+                <fieldset>
+                    <legend>Enter your username and password</legend>
+                    <div class="form-group">
+                      <label for="inputName" class="col-lg-2 control-label">UserName</label>
+                      <div class="col-lg-10">
+                        <input type="text" ng-model="login.username" name="input_username" class="form-control" id="inputName" placeholder="UserName">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label for="password" class="col-lg-2 control-label">Password</label>
+                      <div class="col-lg-10">
+                        <input type="password" ng-model="login.password" name="input_password" class="form-control" id="password" placeholder="Password">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <input class="btn btn-success" type="submit" name="login" value="Login">
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!-- Signup Modal -->
+
+        <div class="modal fade" id="signupModal" role="dialog">
+              <div class="modal-dialog" >
+                <div class="modal-content">
+                  <div class="modal-body">
+                  <h5 class="lead text-center text-muted">Signup</h5>
+
+                    <form class="form-horizontal" ng-submit="signupForm()">
+                        <fieldset>
+                            <legend>Enter your username and password</legend>
+                            <div class="form-group">
+                              <label for="inputName" class="col-lg-2 control-label">UserName</label>
+                              <div class="col-lg-10">
+                                <input type="text" ng-model="signup.username" name="input_username" class="form-control" id="inputName" placeholder="UserName">
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <label for="password" class="col-lg-2 control-label">Password</label>
+                              <div class="col-lg-10">
+                                <input type="password" ng-model="signup.password" name="input_password" class="form-control" id="password" placeholder="Password">
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <input class="btn btn-info" type="submit" name="signup" value="Signup">
+                            </div>
+                          </fieldset>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+        </div>
+      {% if not username %}
+        <div class="container">
+          <div class="jumbotron">
+            <p class="lead">Please login or signup before proceeding!</p>
+            <button class="btn btn-success" data-target="#loginModal" data-toggle="modal">Login</button>
+            <button class="btn btn-info" data-target="#signupModal" data-toggle="modal">Signup</button>
+          </div>
+        </div>
+      {% else %}
+        <div class="container">
+          <div class="jumbotron">
+            <p class="lead">Welcome {{ username }}</p>
+          </div>
+        </div>
+      {% endif %}
+
+  </body>
+</html>

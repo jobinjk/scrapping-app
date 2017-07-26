@@ -1,0 +1,34 @@
+{% include "head.html" %}
+<body ng-controller="MainController">
+{% include "nav.html" %}
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-6">
+
+            <form class="form-horizontal" ng-submit="scrapForm()">
+              <fieldset>
+                <legend>Welcome</legend>
+                <div class="form-group">
+                  <label for="inputurl" class="col-lg-2 control-label">URL</label>
+                  <div class="col-lg-10">
+                    <input type="text" ng-model="scrapModel" class="form-control" id="inputurl" placeholder="Enter the url">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="row" ng-if="input_url && filename">
+        <div class="col-md-6">
+            <h4>Your request for file containing <code>[[input_url]]</code> is available in the file <code>[[filename]]</code>.<br>Please <a ng-click="downloadFile(filename)" class="btn btn-default">click here to download</a></h4>
+        </div>
+    </div>
+</div>
+</body>
